@@ -27,6 +27,10 @@ mongoose
     console.log("Error in connecting to the database:", error);
   });
 
+app.get("/", (req, res) => {
+  res.status(200).send("Hellow welcome to Expresjs backend");
+});
+
 app.use("/api/signup", signupRouter);
 app.use("/api/login", loginRouter);
 app.use("/api/users/:userId/articles", createArticelsRouter);
