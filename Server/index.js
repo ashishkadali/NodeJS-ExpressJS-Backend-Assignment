@@ -16,10 +16,13 @@ app.use(cors());
 const PORT = process.env.PORT || 3000;
 
 mongoose
-  .connect("mongodb://localhost:27017/Backend-assignemnt", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(
+    "mongodb+srv://ashishkadali7:31gDGS3Qn7qrd3UC@cluster0.ncx2rcu.mongodb.net/Backend-assignemnt",
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    }
+  )
   .then(() => {
     console.log("Connected to the database");
   })
@@ -27,15 +30,15 @@ mongoose
     console.log("Error in connecting to the database:", error);
   });
 
-app.get("/", (req, res) => {
-  res.status(200).send("Hellow welcome to Expresjs backend");
-});
-
 app.use("/api/signup", signupRouter);
 app.use("/api/login", loginRouter);
 app.use("/api/users/:userId/articles", createArticelsRouter);
 app.use("/api/articles", allArticelsRouter);
 app.use("/api/users/:userId", updateRouter);
+
+app.get("/", (req, res) => {
+  res.status(200).send("Hellow welcome to Expresjs backend");
+});
 
 app.listen(PORT, (err) => {
   if (err) throw err;
