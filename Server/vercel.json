@@ -4,7 +4,7 @@
   "routes": [{ "src": "/.*", "dest": "index.js" }],
   "functions": {
     "api/**/*.js": {
-      "timeout": 30
+      "timeout": 40
     }
   }
 }
